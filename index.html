@@ -1,0 +1,369 @@
+<html>
+    <script>
+        function sugg()
+        {
+            var b,e,f,h,s,t,w; 
+            w=document.getElementById("we").value;
+            h=document.getElementById("he").value;
+            if (w!='' && h!='')
+            {
+                b=((w)/(h*h))*10000;
+                if(b<=18.5)
+                    t="Under Weight";
+                else if(b>=18.6 && b<=24.9)
+                    t="Normal";
+                else if(b>=25 && b<=29.9)
+                    t="Over Weight";
+                else if(b>=30)
+                    t="Obese";
+                document.getElementById("bm").innerHTML="Your BMI is "+b.toPrecision(2);
+                document.getElementById("bm1").innerHTML="You are "+t.toUpperCase();
+                if(t=="Under Weight")
+                {
+                    f="Starchy vegetables, dense whole grains, proteins low in saturated fat and low-fat dairy. "
+                    e="carrot, tomato, barley, rice porridge, milk, yogurt, cheese, bread, wheat flour, noodle, rice flour";
+                    document.getElementById("foo").innerHTML="Your food suggestion is : "+f;
+                    document.getElementById("foo1").innerHTML="Example : "+e;
+                }
+                else if(t=="Normal")
+                {
+                    f="Fruits, vegetables, whole-grains, legumes, nuts and seeds, meat,poultry and fish";
+                    e="apple, banana, grapes, bread, soya bean curd, soya bean milk, dhal, anchovy, fish ball, crab, cuttlefish";
+                    document.getElementById("foo").innerHTML="Your food suggestion is : "+f;
+                    document.getElementById("foo1").innerHTML="Example : "+e;
+                }
+                else if(t=="Over Weight")
+                {
+                    f="Whole grains, fresh produce, beans and nuts, fish, fruits and vegetables";
+                    e="oat, barley, coconut water, peanut, almond, fish ball, grilled fish, green apple, banana, orange, mango, carrot, papaya";
+                    document.getElementById("foo").innerHTML="Your food suggestion is : "+f;
+                    document.getElementById("foo1").innerHTML="Example : "+e;
+                }
+                else if(t=="Obese")
+                {
+                    f="Vegetables, high fibre food, whole grains, lean proteins and fruits";
+                    e="brown rice, whole-wheat pasta, wheat bread, broccoli, legumes and spinach, tofu, fish, shellfish";
+                    document.getElementById("foo").innerHTML="Your food suggestion is : "+f;
+                    document.getElementById("foo1").innerHTML="Example : "+e;
+                }
+            }
+            s=document.getElementById("st").value;
+            if (s!='')
+            {
+                if(t=="Under Weight" || t=="Normal")
+                {
+                    f="Pushups, Pullups, Lunges, Squats, Bench press, Overhead press."
+                    document.getElementById("exe").innerHTML="Your exercise suggestion is : "+f;
+                }
+                else if(t=="Over Weight")
+                {
+                    f="Waliking, Jogging, Cycling, Weight training, Interval training, Swimming, Yoga.";
+                    document.getElementById("exe").innerHTML="Your exercise suggestion is : "+f;
+                }
+                else if(t=="Obese")
+                {
+                    f="Walking is good. Consult a doctor before start doing exercises. Because some exercises may cause danger for obese people.";
+                    document.getElementById("exe").innerHTML="Your exercise suggestion is : "+f;
+                }
+            }
+            else
+            {
+                alert("Please fill the details properly!");
+            }
+        }
+        function cc()
+        {
+            var age=parseInt(document.getElementById("age").value);
+            var cm =document.getElementById("he").value;
+            var weight=document.getElementById("we").value;
+            if (age!='' && cm!='' && weight!='')
+            {
+                var loa=document.getElementById("loa").value;
+                if(document.getElementById("gen").checked)
+                {
+                    fd=(10*weight)+(6.25*cm)-(5*age)+5;
+                }
+                else
+                {
+                    fd=(10*weight)+(6.25*cm)-(5*age)-161;
+                }
+                switch(loa)
+                {
+                    case "1":
+                        cneed=fd*1.2;
+                        break;
+                    case "2":
+                        cneed=fd*1.375
+                        break;
+                    case "3":
+                        cneed=fd*1.53;
+                        break;
+                    case "4":
+                        cneed=fd*1.725;
+                        break;
+                    case "5":
+                        cneed=fd*1.9;
+                        break;
+                }
+                cneed=Math.floor(cneed);
+                fneed=Math.floor((cneed*0.25)/9);
+                pneed=Math.floor((cneed*0.25)/4);
+                crneed=Math.floor((cneed*0.25)/4);
+                document.getElementById("rc").value=" "+cneed;
+                document.getElementById("rf").value=" "+fneed;
+                document.getElementById("rp").value=" "+pneed;
+                document.getElementById("rh").value=" "+crneed;
+                document.getElementById("l1").innerHTML="grams";
+                document.getElementById("l2").innerHTML="grams";
+                document.getElementById("l3").innerHTML="grams";
+                var caltype=document.getElementById("caltype").value;
+                if (caltype=='g')
+                {
+                    document.getElementById("l1").innerHTML="grams";
+                    document.getElementById("l2").innerHTML="grams";
+                    document.getElementById("l3").innerHTML="grams";
+                }
+                if (wtype=="pounds")
+                {
+                    fat1 = fneed * 0.0022 ;
+                    pro1 = pneed * 0.0022 ;
+                    car1 = crneed * 0.0022 ;
+                    fat1=fat1.toFixed(3);
+                    pro1 = pro1.toFixed(3);
+                    car1 = car1.toFixed(3);
+                    document.getElementById("rf").value=" "+fat1;
+                    document.getElementById("rp").value=" "+pro1;
+                    document.getElementById("rh").value=" "+car1;
+                    document.getElementById("l1").innerHTML="lbs";
+                    document.getElementById("l2").innerHTML="lbs";
+                    document.getElementById("l3").innerHTML="lbs";
+                }
+                if (caltype=='pounds')
+                {
+                    fat1 = fneed * 0.0022 ;
+                    pro1 = pneed * 0.0022 ;
+                    car1 = crneed * 0.0022 ;
+                    fat1=fat1.toFixed(3);
+                    pro1 = pro1.toFixed(3);
+                    car1 = car1.toFixed(3);
+                    document.getElementById("rf").value=" "+fat1;
+                    document.getElementById("rp").value=" "+pro1;
+                    document.getElementById("rh").value=" "+car1;
+                    document.getElementById("l1").innerHTML="lbs";
+                    document.getElementById("l2").innerHTML="lbs";
+                    document.getElementById("l3").innerHTML="lbs";
+                }
+                if (caltype=='kg')
+                {
+                    fat2 = fneed / 1000;
+                    pro2 = pneed / 1000;
+                    car2 = crneed / 1000;
+                    fat2=fat2.toFixed(3);
+                    pro2 = pro2.toFixed(3);
+                    car2 = car2.toFixed(3);
+                    document.getElementById("rf").value=" "+fat2;
+                    document.getElementById("rp").value=" "+pro2;
+                    document.getElementById("rh").value=" "+car2;
+                    document.getElementById("l1").innerHTML="kilogram";
+                    document.getElementById("l2").innerHTML="kilogram";
+                    document.getElementById("l3").innerHTML="kilogram";
+                }
+            }
+            else
+            {
+                alert("Please fill the details properly!");
+            }
+        }
+        function cknum(event,num)
+        {
+            var kc;
+            if(window.event)
+            {
+                kc=event.keyCode;
+            }
+            else
+            {
+                kc=event.which;
+            }
+            var a=num.value;
+            if(kc==48)
+            {
+                if(a=="")
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            if (kc!=8 && kc!=0)
+            {
+                if (kc<49||kc>57)
+                {
+                    return false;
+                }
+            }
+        }
+        function convert()
+        {
+            var age=parseInt(document.getElementById("age").value);
+            var cm =document.getElementById("he").value;
+            var weight=document.getElementById("we").value;
+            if (age!='' && cm!='' && weight!='')
+            {
+                var caltype=document.getElementById("caltype").value;
+                var fat = document.getElementById("rf").value;
+                var pro = document.getElementById("rp").value;
+                var car = document.getElementById("rh").value;
+                document.getElementById("rc").value=" "+cneed;
+                document.getElementById("rf").value=" "+fneed;
+                document.getElementById("rp").value=" "+pneed;
+                document.getElementById("rh").value=" "+crneed;
+                if (caltype=='g')  
+                {
+                    document.getElementById("rc").value=" "+cneed;
+                    document.getElementById("rf").value=" "+fneed;
+                    document.getElementById("rp").value=" "+pneed;
+                    document.getElementById("rh").value=" "+crneed;
+                    document.getElementById("l1").innerHTML="grams";
+                    document.getElementById("l2").innerHTML="grams";
+                    document.getElementById("l3").innerHTML="grams";
+                }
+                if (caltype=='pounds')
+                {
+                    fat1 = fneed * 0.0022 ;
+                    pro1 = pneed * 0.0022 ;
+                    car1 = crneed * 0.0022 ;
+                    fat1=fat1.toFixed(3);
+                    pro1 = pro1.toFixed(3);
+                    car1 = car1.toFixed(3);
+                    document.getElementById("rf").value=" "+fat1;
+                    document.getElementById("rp").value=" "+pro1;
+                    document.getElementById("rh").value=" "+car1;
+                    document.getElementById("l1").innerHTML="lbs";
+                    document.getElementById("l2").innerHTML="lbs";
+                    document.getElementById("l3").innerHTML="lbs";
+                }
+                if (caltype=='kg')
+                {
+                    fat2 = fneed / 1000;
+                    pro2 = pneed / 1000;
+                    car2 = crneed / 1000;
+                    fat2=fat2.toFixed(3);
+                    pro2 = pro2.toFixed(3);
+                    car2 = car2.toFixed(3);
+                    document.getElementById("rf").value=" "+fat2;
+                    document.getElementById("rp").value=" "+pro2;
+                    document.getElementById("rh").value=" "+car2;
+                    document.getElementById("l1").innerHTML="kilogram";
+                    document.getElementById("l2").innerHTML="kilogram";
+                    document.getElementById("l3").innerHTML="kilogram";
+                }
+            }
+            else
+            {
+                alert("Please fill the details properly!");
+            }
+        }
+    </script>
+    <style>
+        body
+        {
+            font-size: 20px;
+            background-image: url("bg.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        form
+        {
+            border:2px solid black;
+            padding: 25px;
+            text-align:left;
+            align-content: center;
+        }
+        #bt
+        {
+            padding: 15px;
+            font-size: 15px;
+            background-color: dodgerblue; 
+	        border: 2px solid white;
+        }
+        input,select
+        {
+            border: 1px solid black;
+            padding: 7px;
+        }
+    </style>
+    <body>
+        <h1>Health Calculator</h1>
+        <form method="post" >
+            <input type="text" name="age" id="age" onkeypress="return cknum(event,age)" placeholder="Age in years"><br><br>
+            <input type="text" id="we" placeholder="Weight in kg"><br><br>
+            <input type="text" id="he" placeholder="Height in cm"><br><br>
+            Gender :<input type="radio" name="gen" id="gen" checked>Male
+            <input type="radio" name="gen" id="gen">Female<br><br>
+            <input type="text" id="st" placeholder="Step count per day"><br><br>
+            Activeness :<br><br>
+            <select name="loa" id="loa">
+            <option value="1">Sedentary</option>
+            <option value="2">Light Active</option>
+            <option value="3">Moderately Active</option>
+            <option value="4">Very Active</option>
+            <option value="5">Extra Active</option>
+            </select><br><br>
+            <p id="bm"></p>
+            <p id="bm1"></p>
+            <p id="foo"></p>
+            <p id="foo1"></p>
+            <p id="exe"></p>
+            <button type="button" id="bt" onclick="sugg()">Suggestions</button><br><br>
+            <button type="button" id="bt" onclick="cc()">Calculate Calories</button><br><br>
+            <h4>Calorie Result :</h4>
+            Calorie Needed :<input type="text" id="rc" readonly>
+            <select name="caltype" id="caltype" onChange="convert()">
+                <option value="g">Grams</option>
+                <option value="kg">Kilograms</option>
+                <option value="pounds">Pounds</option>
+            </select><br><br>
+            <b>You Must Intake The Following Daily</b><br><br>
+            Fat : <input type="text" id="rf" size="10" readonly>per day<br><br>
+            Protein : <input type="text" id="rp" size="10" readonly>per day<br><br>
+            Carbohydrate : <input type="text" id="rh" size="10" readonly>per day<br><br>
+        </form>
+        <h2>General Information</h2>
+        <img src="tab.PNG" alt="BMI Table">
+        <h3>Why is BMI Important?</h3>
+        <p>If your BMI is high, you may have an increased risk of developing certain diseases, including:</p>
+        <ul>
+            <li>High blood pressure</li>
+            <li>Heart disease</li>
+            <li>High blood cholesterol</li>
+            <li>Diabetes</li>
+            <li>Stroke</li>
+            <li>Certain types of cancer</li>
+            <li>Arthritis</li>
+            <li>Breathing problems</li>
+        </ul>
+        <h3>Improving Your Health:</h3>
+        <p>Weight reduction is an important way to reduce your BMI and improve your overall health. Even a modest 5% reduction from your current  weight is beneficial to your health. For instance, a 5' 2" female who weighs 150 pounds (BMI=27), can improve her health by losing as little as seven pounds, reducing her BMI to 26.</p>
+        <h3>Remember These Tips</h3>
+        <ul>
+            <li>Realistic Goals</li>
+            <li>The best way to lose weight and keep it off is to balance the foods you eat with daily physical activity.</li>
+            <li>Eat a healthy diet and get the recommended 30 minutes or more of daily physical activity.</li>
+            <li>Develop healthy habits, since permanent changes will lead to a lifetime of better health.</li>
+        </ul>
+        <p>This is an estimate of the calorie intake you need every day to maintain your current weight. Note that the calorie requirements increases as you are more active.</p>
+        <ul>
+            <li>If you want to lose weight, subtract 500 calories per day for each pound you want to lose every week.</li>
+            <li>Add 500 calories per day for each pound you want to gain each week.</li>
+            <li>Theoretically this works as 1 pound of fat represents 3500 calories (500 calories per day x 7 days = 3500 calories).</li>
+            <li>Calorie levels of less than 1200 calories are not recommended and are too low to meet nutritional requirements.</li>
+            <li>Weight loss of more than 2 pounds per week is not recommended.</li>
+            <li>For a more balanced approach, increase your activity.</li>
+            <li>Consider cutting calorie intake by 250 calories per day and exercising to expend (use up) the other 250 calories.</li>
+            <li>This approach prevents a decrease in your metabolic rate and promotes increased lean muscle mass.</li>
+        </ul>
+    </body>
+</html>
